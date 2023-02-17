@@ -20,7 +20,7 @@ feedbackForm.addEventListener('submit', e => {
   e.preventDefault();
   const { currentTarget } = e;
   const formData = new FormData(currentTarget);
-  formData.forEach((value, name) => console.log(name, value));
+  formData.forEach((value, name) => console.log(`${name}: ${value}`));
   currentTarget.reset();
 });
 
