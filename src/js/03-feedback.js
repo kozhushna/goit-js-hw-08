@@ -20,7 +20,20 @@ feedbackForm.addEventListener('submit', e => {
   e.preventDefault();
   const { currentTarget } = e;
   const formData = new FormData(currentTarget);
-  formData.forEach((value, name) => console.log(`${name}: ${value}`));
+  let hasEmptyFields;
+  const messages = [];
+  formData.forEach((value, name) => {
+    if (value.trim()) {
+      messages.push(`${name}: ${value}`);
+    } else {
+      hasEmptyFields = true;
+      alert(`Заповніть, будь ласка, поле '${name}'`);
+    }
+  });
+  if (hasEmptyFields) {
+    return;
+  }
+  messages.forEach(m => console.log(m));
   currentTarget.reset();
 });
 
